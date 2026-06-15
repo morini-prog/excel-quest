@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /scorecards/{document} {
+      // Permitir la lectura a cualquier usuario autenticado (para que los docentes puedan ver las estadísticas)
+      allow read: if request.auth != null;
+      
+      // Permitir la creación si el usuario está autenticado y es dueño del registro
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+      
+      // Bloquear actualizaciones y eliminaciones para preservar la integridad del diagnóstico
+      allow update, delete: if false;
+    }
+  }
+}
