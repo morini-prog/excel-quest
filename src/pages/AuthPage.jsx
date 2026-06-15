@@ -68,7 +68,7 @@ export default function AuthPage() {
         </motion.div>
 
         <p className="text-center mt-6 text-slate-600 text-sm">
-          <a href="/" className="hover:text-slate-400 transition-colors">← Volver al inicio</a>
+          <a href="/teacher" className="hover:text-violet-400 transition-colors">🎓 Ingreso Docente</a>
         </p>
       </div>
     </div>
